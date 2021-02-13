@@ -1,0 +1,36 @@
+- since version 0.4
+	* added libutempter support
+	* changed utmp to utmpx for better compatibility
+	* fixed a bug of core dump when dragging to under the window
+	* fixed bugs of (un)drawing cursor
+	* fixed automake/autoconf related bugs
+	* fixed bugs of fribidi layout driver for IA-64 system
+- since version 0.3
+	* added utmp support
+	* fixed a bug that doesn't scroll properly when using scrollbar
+	* fixed a bug of selection that multi width characters are not 
+	selected properly
+	* fixed a bug that selection of highlighted text doesn't inverse
+	* deleted VTScreenView_update_rect
+- since version 0.2
+	* added CHA(ESC [ G) Cursor Character Absolute escape sequence
+	* fixed a bug of HPA mapping (ESC [ G -> ESC [ `)
+	* added CHT(ESC [ I) Cursor Forward Tabulation escape sequence
+	* fixed a bug that TAB(^I) doesn't wrap properly
+	* added CNL(ESC [ E) Cursor Next Line escape sequence
+	* added CPL(ESC [ F) Cursor Preceding Line escape sequence
+	* re-implemented screen_row.c to reduce memory consumption
+- since version 0.1
+	* changed thread model to event dispatch model
+	* added ECH(ESC [ X): Erase Character escape sequence
+	* added HPA(ESC [ G): Character Position Absolute escape sequence
+	* added CBT(ESC [ Z): Cursor Backward Character escape sequence
+	* added VPA(ESC [ d): Line Position Absolute escape sequence
+	* changed tty_termila_io_<name> to TtyTerminalIO_<name>
+	* added TtyTerminalIO_get_associated_fd() method
+	* changed enable PLS library is default
+	* added Splash Text
+	* fixed a bug that fribidi layout doesn't work on some locales
+	* added alternate buffer & cursor(ESC [ ? 1049 h/l) escape sequences
+	
+	

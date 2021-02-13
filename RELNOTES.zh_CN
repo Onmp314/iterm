@@ -1,0 +1,61 @@
+                      国际化的终端模拟器框架
+                    原著：Jiro SEKIBA <jir@yamato.ibm.com>
+                    翻译：梁昌泰 <beos@turbolinux.com.cn>
+
+* 前言
+
+这是公开发布的国际化终端模拟器框架(iterm)之0.3版本。您可以从以下URL下载到
+tar.gz包：
+   http://www-124.ibm.com/linux/patches/?patch_id=478
+
+或者从以下操作从 CVS 代码仓库中获得最新的源代码∶
+
+   cvs -d:pserver:anonymous@cvs.li18nux.org:/cvsroot login
+   cvs -d:pserver:anonymous@cvs.li18nux.org:/cvsroot co iterm 
+
+  此发布版本由四个部分组成，他们是∶
+
+ - lib
+    libiterm，即终端模拟器库。
+
+ - unix/fbiterm
+    即帧缓冲终端模拟器库，倚赖于libiterm。
+
+ - unix/Xaw/lib
+    libXiterm，即终端模拟器器件库。
+
+ - unix/Xaw/src
+    即X终端模拟器库，倚赖于上述的器件库和libiterm库。
+
+  欲知详情，敬请查阅每个目录中的文档。
+
+* 新增特性
+
+这次，内存消耗已经大大改进，且不会损失任何速度。对于xiterm，同0.2版本时的
+xiterm相比，节省了大约2.7M字节内存的消耗。libiterm 0.3版本可能在二进制代码
+上与0.2版本(注意了：不是0.1版本哦)兼容，但是我建议升级并且重新编译其他的库
+(libXiterm)和二进制代码(fbiterm、xiterm)。
+
+fbiterm现在缺省设置环境变量TERM为“iterm”，而并非是原先的“vt100”。这是
+因为iterm具有很高的兼容性。iterm的terminfo记录放在unix/terminfo目录下。请
+务必记得编译并安装terminfo记录。
+
+* 变更记录
+
+ 0.2版本后的变更
+
+ - libiterm
+  * added CHA(ESC [ G) Cursor Character Absolute escape sequence
+  * fixed a bug of HPA mapping (ESC [ G -> ESC [ `)
+  * added CHT(ESC [ I) Cursor Forward Tabulation escape sequence
+  * fixed a bug that TAB(^I) doesn't wrap properly
+  * added CNL(ESC [ E) Cursor Next Line escape sequence
+  * added CPL(ESC [ F) Cursor Preceding Line escape sequence
+  * re-implemented screen_row.c to reduce memory consumption
+
+ - libXiterm
+  * fixed a bug which doesn't send position of mouse button 3
+  * changed default TERM environment variable value kterm to xterm
+
+ - fbiterm
+  * changed default TERM environment variable value vt100 to iterm
